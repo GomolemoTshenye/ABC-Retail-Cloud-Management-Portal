@@ -1,0 +1,43 @@
+﻿@model List<string>
+@{
+    ViewData["Title"] = "Contracts (POE 2 - File Storage)";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2><i class="bi bi-file-earmark-text"></i> @ViewData["Title"]</h2>
+        <a asp-action="Upload" class="btn btn-primary"><i class="bi bi-upload"></i> Upload Contract</a>
+    </div>
+    @if (Model.Any())
+    {
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th>File Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var fileName in Model)
+                        {
+                            <tr>
+                                <td>@fileName</td>
+                                <td>
+                                    <a href="@Url.Action("Download", new { fileName })" class="btn btn-sm btn-outline-primary"><i class="bi bi-download"></i> View/Download</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle"></i> No contracts uploaded yet.
+        </div>
+    }
+</div>

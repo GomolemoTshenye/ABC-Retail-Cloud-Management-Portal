@@ -1,0 +1,210 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #f5f5f5;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+.navbar {
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand .logo {
+    height: 40px;
+    width: auto;
+}
+
+.nav-link {
+    color: #333 !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+    .nav-link:hover {
+        color: #FFC107 !important;
+    }
+
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+.card-title {
+    color: #FFC107;
+    font-weight: 600;
+}
+
+.card-text {
+    color: #555;
+}
+
+.table {
+    margin-bottom: 0;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(255, 193, 7, 0.1);
+}
+
+.btn {
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+    .btn i {
+        margin-right: 6px;
+    }
+
+.btn-primary {
+    background-color: #FFC107;
+    border-color: #FFB300;
+    color: #333;
+}
+
+    .btn-primary:hover {
+        background-color: #FFB300;
+        border-color: #FFA000;
+        color: #333;
+    }
+
+.btn-outline-primary {
+    border-color: #FFC107;
+    color: #FFC107;
+}
+
+    .btn-outline-primary:hover {
+        background-color: #FFC107;
+        color: #333;
+    }
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #5a6268;
+    }
+
+.btn-outline-success, .btn-outline-warning, .btn-outline-info {
+    border-color: #FFC107;
+    color: #FFC107;
+}
+
+    .btn-outline-success:hover, .btn-outline-warning:hover, .btn-outline-info:hover {
+        background-color: #FFC107;
+        color: #333;
+    }
+
+.form-control, .form-select {
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s ease;
+}
+
+    .form-control:focus, .form-select:focus {
+        border-color: #FFC107;
+        box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+    }
+
+.badge {
+    font-weight: 500;
+    padding: 0.4em 0.8em;
+    border-radius: 6px;
+}
+
+.alert {
+    border-radius: 8px;
+    border: none;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.img-thumbnail {
+    border-radius: 10px;
+    object-fit: cover;
+    max-width: 100px;
+}
+
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+.dashboard-card {
+    border-left: 4px solid #FFC107;
+    transition: all 0.3s ease;
+}
+
+    .dashboard-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+.badge-pending {
+    background-color: #FFC107;
+    color: #333;
+}
+
+.badge-completed {
+    background-color: #28a745;
+    color: white;
+}
+
+.badge-processing {
+    background-color: #17a2b8;
+    color: white;
+}
+
+footer {
+    background-color: #333 !important;
+    color: #fff;
+}
+
+h1.display-4 {
+    color: #333;
+    font-weight: 700;
+}
+
+.lead {
+    color: #555;
+}

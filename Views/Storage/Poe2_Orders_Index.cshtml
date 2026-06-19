@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ABCRETAILSTORE.Models.OrderMessage>
+@using ABCRETAILSTORE.Models
+@{
+    ViewData["Title"] = "Order Queue (POE 2 - Queue Storage)";
+    var customerNames = ViewBag.CustomerNames as Dictionary<string, string>;
+    var productNames = ViewBag.ProductNames as Dictionary<string, string>;
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2><i class="bi bi-cart"></i> @ViewData["Title"]</h2>
+        <a asp-controller="Storage" asp-action="CreateOrder" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Create Order</a>
+    </div>
+    @if (Model.Any())
+    {
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Total Price (ZAR)</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var order in Model)
+                        {
+                            string cName = (customerNames != null && customerNames.TryGetValue(order.CustomerId, out string custName)) ? custName : order.CustomerId;
+                            string pName = (productNames != null && productNames.TryGetValue(order.ProductId, out string prodName)) ? prodName : order.ProductId;
+
+                            <tr>
+                                <td>@order.OrderId</td>
+                                <td>@cName</td>
+                                <td>@pName</td>
+                                <td>@order.Quantity</td>
+                                <td>R @order.TotalPrice.ToString("F2")</td>
+                                <td>@order.OrderDate.ToString("g")</td>
+                                <td>
+                                    <span class="badge @(order.Status == "Pending" ? "bg-warning text-dark" : "bg-success")">@order.Status</span>
+                                </td>
+                                <td>
+                                    <form asp-controller="Storage" asp-action="DeleteOrder" asp-route-id="@order.Id" method="post" class="d-inline" onsubmit="return confirm('Are you sure? This will delete the message from the queue.');">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i> Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle"></i> No orders in the queue.
+        </div>
+    }
+</div>

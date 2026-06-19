@@ -1,0 +1,12 @@
+# VisualStudio Solution User-Specific Files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio 2015/2017/2019/2022 cache/build
+.vs/
+[Bb]in/
+[Oo]bj/
+[Rr]elease/
+[Dd]ebug/

@@ -1,0 +1,40 @@
+﻿@model ABCRETAILSTORE.Models.LoginViewModel
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<h2>@ViewData["Title"]</h2>
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <form asp-action="Login" method="post">
+                <h4>Use a local account to log in.</h4>
+                <p>Admin: `admin@abcretail.com` / `Admin@123`</p>
+                <p>Customer: `customer@abcretail.com` / `Cust@123`</p>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" />
+                    <label asp-for="Email" class="form-label"></label>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Password" class="form-control" autocomplete="current-password" aria-required="true" />
+                    <label asp-for="Password" class="form-label"></label>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="checkbox mb-3">
+                    <label asp-for="RememberMe" class="form-label">
+                        <input class="form-check-input" asp-for="RememberMe" />
+                        @Html.DisplayNameFor(m => m.RememberMe)
+                    </label>
+                </div>
+                <button type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+            </form>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

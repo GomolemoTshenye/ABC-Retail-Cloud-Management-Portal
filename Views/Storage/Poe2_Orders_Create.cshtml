@@ -1,0 +1,69 @@
+﻿@model ABCRETAILSTORE.Models.OrderMessage
+@using ABCRETAILSTORE.Models
+@{
+    ViewData["Title"] = "Create Order (POE 2)";
+    var products = ViewBag.Products as List<ProductEntity>;
+    var customers = ViewBag.Customers as List<CustomerEntity>;
+}
+
+<div class="container mt-4">
+    <h2><i class="bi bi-plus-circle"></i> @ViewData["Title"]</h2>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-controller="Storage" asp-action="CreateOrder" method="post">
+                @Html.AntiForgeryToken()
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                @if (customers == null || !customers.Any())
+                {
+                    <div class="alert alert-warning">Please add a customer in the 'Customers (POE 2)' section first.</div>
+                }
+                else
+                {
+                    <div class="mb-3">
+                        <label asp-for="CustomerId" class="form-label">Customer *</label>
+                        <select asp-for="CustomerId" class="form-select" asp-items="@(new SelectList(customers, "Id", "Name"))" required>
+                            <option value="">-- Select Customer --</option>
+                        </select>
+                        <span asp-validation-for="CustomerId" class="text-danger"></span>
+                    </div>
+                }
+
+                @if (products == null || !products.Any())
+                {
+                    <div class="alert alert-warning">Please add a product in the 'Products (POE 2)' section first.</div>
+                }
+                else
+                {
+                    <div class="mb-3">
+                        <label asp-for="ProductId" class="form-label">Product *</label>
+                        <select asp-for="ProductId" class="form-select" asp-items="@(new SelectList(products, "Id", "Name"))" required>
+                            <option value="">-- Select Product --</option>
+                        </select>
+                        <span asp-validation-for="ProductId" class="text-danger"></span>
+                    </div>
+                }
+
+                <div class="mb-3">
+                    <label asp-for="Quantity" class="form-label">Quantity *</label>
+                    <input asp-for="Quantity" class="form-control" min="1" value="1" required />
+                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary" disabled="@(customers == null || !customers.Any() || products == null || !products.Any())">
+                        <i class="bi bi-save"></i> Create Order
+                    </button>
+                    <a asp-action="Orders" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Back to List
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
